@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ZYR | Gaming Profile</title>
+<meta name="description" content="پروفایل گیمینگ رسمی ZYR">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%2300ffc8%22>Z</text></svg>">
+
+<style>
+  :root{
+    --bg1:#050607;
+    --bg2:#0a0d0f;
+    --accent:#00ffc8;
+    --accent2:#7b5cff;
+    --accent3:#ff2e9a;
+    --glass:rgba(255,255,255,0.05);
+    --glass-border:rgba(255,255,255,0.12);
+    --text:#f2f2f2;
+    --muted:#9aa0a6;
+  }
+
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+
+  html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+    background:#050607;
+    color:var(--text);
+    font-family:'Vazirmatn','Segoe UI',Tahoma,Arial,sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* ===== animated background ===== */
+  .bg-glow{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    pointer-events:none;
+  }
+  .bg-glow span{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:0.35;
+    mix-blend-mode:screen;
+  }
+  .bg-glow span:nth-child(1){
+    width:340px; height:340px;
+    background:var(--accent);
+    top:-100px; left:-80px;
+    animation:driftA 14s ease-in-out infinite;
+  }
+  .bg-glow span:nth-child(2){
+    width:380px; height:380px;
+    background:var(--accent2);
+    bottom:-140px; right:-100px;
+    animation:driftB 16s ease-in-out infinite;
+  }
+  .bg-glow span:nth-child(3){
+    width:260px; height:260px;
+    background:var(--accent3);
+    top:40%; left:60%;
+    animation:driftC 18s ease-in-out infinite;
+    opacity:0.18;
+  }
+  @keyframes driftA{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(60px,80px) scale(1.15); }
+  }
+  @keyframes driftB{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(-50px,-70px) scale(1.2); }
+  }
+  @keyframes driftC{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(-40px,40px) scale(1.25); }
+  }
+
+  .grid-overlay{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:34px 34px;
+    -webkit-mask-image:radial-gradient(ellipse at center, black, transparent 75%);
+    mask-image:radial-gradient(ellipse at center, black, transparent 75%);
+    pointer-events:none;
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 16px 24px;
+  }
+
+  .card{
+    width:100%;
+    max-width:420px;
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    border-radius:28px;
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:
+      0 8px 40px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    padding:30px 22px 24px;
+    position:relative;
+    overflow:hidden;
+    animation:floatIn 0.8s cubic-bezier(.2,.8,.2,1) both;
+  }
+
+  .card::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:28px;
+    padding:1px;
+    background:linear-gradient(135deg, rgba(0,255,200,0.5), transparent 30%, transparent 70%, rgba(123,92,255,0.5));
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    opacity:0.6;
+    animation:borderSpin 6s linear infinite;
+    pointer-events:none;
+  }
+
+  @keyframes borderSpin{
+    0%{ filter:hue-rotate(0deg); }
+    100%{ filter:hue-rotate(360deg); }
+  }
+
+  @keyframes floatIn{
+    from{opacity:0; transform:translateY(24px) scale(0.96);}
+    to{opacity:1; transform:translateY(0) scale(1);}
+  }
+
+  .header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    margin-bottom:22px;
+    position:relative;
+  }
+
+  .avatar-wrap{
+    position:relative;
+    width:100px;
+    height:100px;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .avatar-ring{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:1.5px solid transparent;
+    border-top-color:var(--accent);
+    border-right-color:var(--accent2);
+    animation:spin 3.5s linear infinite;
+  }
+  .avatar-ring.reverse{
+    inset:8px;
+    border:1px solid transparent;
+    border-bottom-color:var(--accent3);
+    border-left-color:var(--accent);
+    animation:spin 4.5s linear infinite reverse;
+    opacity:0.7;
+  }
+  @keyframes spin{
+    to{ transform:rotate(360deg); }
+  }
+
+  .avatar{
+    width:76px;
+    height:76px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:radial-gradient(circle at 30% 30%, #1a1d1f, #08090a 70%);
+    border:1.5px solid rgba(0,255,200,0.35);
+    box-shadow:
+      0 0 18px rgba(0,255,200,0.35),
+      0 0 40px rgba(123,92,255,0.15),
+      inset 0 0 12px rgba(0,255,200,0.08);
+    position:relative;
+    z-index:1;
+    animation:pulseGlow 3.2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow{
+    0%,100%{ box-shadow:0 0 18px rgba(0,255,200,0.28), 0 0 40px rgba(123,92,255,0.12), inset 0 0 12px rgba(0,255,200,0.06);}
+    50%{ box-shadow:0 0 30px rgba(0,255,200,0.55), 0 0 60px rgba(123,92,255,0.28), inset 0 0 16px rgba(0,255,200,0.12);}
+  }
+
+  .avatar span{
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:1px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    font-family:'Segoe UI',Arial,sans-serif;
+  }
+
+  .logo{
+    font-size:40px;
+    font-weight:800;
+    letter-spacing:4px;
+    font-family:'Segoe UI',Arial,sans-serif;
+    background:linear-gradient(120deg,#ffffff 20%, var(--accent) 45%, var(--accent2) 65%, #ffffff 90%);
+    background-size:250% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin:0;
+    animation:shineText 4s linear infinite, popIn .6s ease .1s both;
+  }
+
+  @keyframes shineText{
+    to{ background-position:250% center; }
+  }
+  @keyframes popIn{
+    from{ opacity:0; transform:translateY(10px) scale(0.9); }
+    to{ opacity:1; transform:translateY(0) scale(1); }
+  }
+
+  .subtitle{
+    color:var(--muted);
+    font-size:14.5px;
+    margin-top:6px;
+    letter-spacing:0.3px;
+    animation:popIn .6s ease .2s both;
+  }
+
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    margin:6px 0 18px;
+  }
+
+  .links{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    position:relative;
+    z-index:1;
+  }
+
+  .btn{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 16px;
+    border-radius:16px;
+    background:rgba(255,255,255,0.035);
+    border:1px solid rgba(255,255,255,0.09);
+    color:var(--text);
+    text-decoration:none;
+    font-size:15px;
+    font-weight:600;
+    position:relative;
+    overflow:hidden;
+    transition:transform .18s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+    cursor:pointer;
+    opacity:0;
+    transform:translateY(14px);
+    animation:btnIn .55s ease forwards;
+  }
+
+  .links .btn:nth-child(1){ animation-delay:.15s; }
+  .links .btn:nth-child(2){ animation-delay:.22s; }
+  .links .btn:nth-child(3){ animation-delay:.29s; }
+  .links .btn:nth-child(4){ animation-delay:.36s; }
+  .links .btn:nth-child(5){ animation-delay:.43s; }
+  .links .btn:nth-child(6){ animation-delay:.50s; }
+
+  @keyframes btnIn{
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .btn::after{
+    content:"";
+    position:absolute;
+    top:0; bottom:0;
+    left:-60%;
+    width:40%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.14), transparent);
+    transform:skewX(-20deg);
+    transition:left .6s ease;
+  }
+  .btn:hover::after{ left:130%; }
+
+  .btn:active{
+    transform:scale(0.96);
+  }
+
+  .btn:hover{
+    background:rgba(255,255,255,0.07);
+    border-color:rgba(0,255,200,0.4);
+    box-shadow:0 0 22px rgba(0,255,200,0.18);
+    transform:translateY(-2px);
+  }
+
+  .btn .icon{
+    width:38px;
+    height:38px;
+    min-width:38px;
+    border-radius:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .btn:hover .icon{
+    transform:scale(1.1) rotate(-4deg);
+  }
+
+  .btn .icon svg{ width:20px; height:20px; }
+
+  .btn .meta{
+    display:flex;
+    flex-direction:column;
+    line-height:1.3;
+    overflow:hidden;
+  }
+
+  .btn .name{
+    font-size:14px;
+    font-weight:700;
+    color:#fff;
+  }
+
+  .btn .user{
+    font-size:12.5px;
+    color:var(--muted);
+    direction:ltr;
+    text-align:right;
+    unicode-bidi:plaintext;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+
+  .btn .arrow{
+    margin-inline-start:auto;
+    color:var(--muted);
+    font-size:16px;
+    transition:transform .2s ease, color .2s ease;
+  }
+  .btn:hover .arrow{ transform:translateX(-4px); color:var(--accent); }
+
+  .btn.call{
+    background:linear-gradient(135deg, rgba(0,255,200,0.14), rgba(123,92,255,0.10));
+    border-color:rgba(0,255,200,0.35);
+  }
+  .btn.call:hover{
+    box-shadow:0 0 28px rgba(0,255,200,0.3);
+  }
+  .btn.call .icon{ background:rgba(0,255,200,0.12); border-color:rgba(0,255,200,0.3); }
+
+  /* platform accent colors on icon */
+  .ic-telegram svg{ fill:#29b6f6; }
+  .ic-rubika svg{ fill:#ff5722; }
+  .ic-instagram svg{ fill:#e1306c; }
+  .ic-discord svg{ fill:#5865f2; }
+  .ic-x svg{ fill:#ffffff; }
+  .ic-call svg{ fill:#00ffc8; }
+
+  .toast{
+    position:fixed;
+    bottom:24px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:rgba(20,22,24,0.95);
+    border:1px solid rgba(0,255,200,0.35);
+    color:#fff;
+    padding:10px 18px;
+    border-radius:12px;
+    font-size:13.5px;
+    opacity:0;
+    pointer-events:none;
+    transition:all .3s ease;
+    z-index:50;
+    box-shadow:0 4px 20px rgba(0,0,0,0.5);
+  }
+  .toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+
+  footer{
+    margin-top:24px;
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:1px;
+    position:relative;
+    z-index:1;
+    opacity:0;
+    animation:popIn .6s ease .6s forwards;
+  }
+
+  footer .dot{
+    color:var(--accent);
+    margin:0 4px;
+  }
+
+  @media (max-width:360px){
+    .logo{ font-size:34px; }
+    .btn{ padding:12px 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow"><span></span><span></span><span></span></div>
+<div class="grid-overlay"></div>
+
+<div class="wrap">
+  <div class="card">
+
+    <div class="header">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <div class="avatar-ring reverse"></div>
+        <div class="avatar"><span>Z</span></div>
+      </div>
+      <h1 class="logo">ZYR</h1>
+      <div class="subtitle">Gaming Profile 🎮</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="links">
+
+      <a class="btn" href="https://t.me/ZYR_gaming" target="_blank" rel="noopener">
+        <span class="icon ic-telegram">
+          <svg viewBox="0 0 24 24"><path d="M21.9 3.6 2.9 11c-1 .4-1 1.5.1 1.8l4.9 1.6 1.9 5.9c.2.7 1 .8 1.5.3l2.6-2.5 4.9 3.6c.7.5 1.7.1 1.9-.7l3-16c.2-1-.7-1.7-1.8-1.4Zm-4.2 3.6-8 7.3-.3 3.2-1.5-4.7L18.8 6c.4-.3.9.3.5.6Z"/></svg>
+        </span>
+        <span class="meta">
+          <span class="name">تلگرام</span>
+          <span class="user">@ZYR_gaming</span>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <a class="btn" href="https://rubika.ir/ZYR_Robika" target="_blank" rel="noopener">
+        <span class="icon ic-rubika">
+          <svg viewBox="0 0 24 24"><path d="M12 2 2 7v10l10 5 10-5V7L12 2Zm0 2.3 7.8 3.9L12 12l-7.8-3.8L12 4.3ZM4.5 9.5 11 12.8v7.4l-6.5-3.3V9.5Zm15 0v7.4L13 20.2v-7.4l6.5-3.3Z"/></svg>
+        </span>
+        <span class="meta">
+          <span class="name">روبیکا</span>
+          <span class="user">@ZYR_Robika</span>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <a class="btn" href="https://instagram.com/zyr.game" target="_blank" rel="noopener">
+        <span class="icon ic-instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.4.5.6.2 1 .5 1.5.9.4.4.7.9.9 1.5.2.4.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.4-.2.6-.5 1-.9 1.5-.4.4-.9.7-1.5.9-.4.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.4-.5-.6-.2-1-.5-1.5-.9-.4-.4-.7-.9-.9-1.5-.2-.4-.4-1.2-.5-2.4-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-2 .5-2.4.2-.6.5-1 .9-1.5.4-.4.9-.7 1.5-.9.4-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-2 .4-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.1.4-.3 1-.4 2-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.1 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 2-.4.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.1-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.1-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.6a5.4 5.4 0 1 1 0 10.8 5.4 5.4 0 0 1 0-10.8Zm0 1.8a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2Zm5.6-2a1.26 1.26 0 1 1 0 2.5 1.26 1.26 0 0 1 0-2.5Z"/></svg>
+        </span>
+        <span class="meta">
+          <span class="name">اینستاگرام</span>
+          <span class="user">zyr.game</span>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <button class="btn" id="discordBtn" type="button" data-username="zyr_gameing1">
+        <span class="icon ic-discord">
+          <svg viewBox="0 0 24 24"><path d="M20.3 5.4A17.6 17.6 0 0 0 15.9 4c-.2.4-.4.9-.6 1.3a16 16 0 0 0-4.6 0c-.2-.4-.4-.9-.6-1.3-1.5.3-3 .8-4.4 1.4C3 9 2.3 12.5 2.6 15.9a17.7 17.7 0 0 0 5.4 2.7c.4-.6.8-1.2 1.1-1.9-.6-.2-1.2-.5-1.7-.8l.4-.3c3.3 1.5 6.9 1.5 10.2 0l.4.3c-.5.3-1.1.6-1.7.8.3.7.7 1.3 1.1 1.9a17.6 17.6 0 0 0 5.4-2.7c.4-3.9-.6-7.4-2.9-10.5ZM9.7 13.8c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm4.7 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg>
+        </span>
+        <span class="meta">
+          <span class="name">دیسکورد</span>
+          <span class="user">zyr_gameing1</span>
+        </span>
+        <span class="arrow">‹</span>
+      </button>
+
+      <a class="btn" href="https://x.com/zyr_gaming" target="_blank" rel="noopener">
+        <span class="icon ic-x">
+          <svg viewBox="0 0 24 24"><path d="M3 3h4.4l4.1 5.8L16.3 3H21l-6.9 8.9L21.4 21h-4.4l-4.5-6.2L6.6 21H2l7.3-9.4L3 3Z"/></svg>
+        </span>
+        <span class="meta">
+          <span class="name">ایکس (توییتر)</span>
+          <span class="user">zyr_gaming</span>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <a class="btn call" href="tel:09103639071">
+        <span class="icon ic-call">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4.9c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z"/></svg>
+        </span>
+        <span class="meta">
+          <span class="name">تماس با ZYR</span>
+          <span class="user">0910 363 9071</span>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+    </div>
+
+    <footer>Tap <span class="dot">•</span> Connect <span class="dot">•</span> Game</footer>
+
+  </div>
+</div>
+
+<div class="toast" id="toast">یوزرنیم کپی شد ✅</div>
+
+<script>
+  // Discord: no public username-based profile URL exists, so copy the username instead.
+  document.getElementById('discordBtn').addEventListener('click', function(){
+    var username = this.getAttribute('data-username');
+    var toast = document.getElementById('toast');
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(function(){ toast.classList.remove('show'); }, 2200);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(username).then(function(){
+        showToast('یوزرنیم دیسکورد کپی شد: ' + username);
+      }).catch(function(){
+        showToast('یوزرنیم دیسکورد: ' + username);
+      });
+    } else {
+      showToast('یوزرنیم دیسکورد: ' + username);
+    }
+  });
+</script>
+
+</body>
+</html>
